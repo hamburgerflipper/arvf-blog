@@ -1,66 +1,42 @@
 export const metadata = {
-  title: '5 Tiny CLI Tricks You (Probably) Didn’t Know',
+  title: 'About Me:',
   alternates: {
     canonical: '/n/1',
   },
 };
 
-# 5 Tiny CLI Tricks You (Probably) Didn’t Know
 
-<br />
+<h1 className="text-3xl font-semibold mb-6">About Me</h1>
+[← back](/)
 
-A lightning-round of command-line nuggets to level-up your dev workflow.
 
-## 1. **`history | grep` + `fzf` = instant recall**
+My name is Angel Rafael Valdez Fernandez. <br />
+I was born in a small town in the deep south of Texas named Brownsville. <br />
 
-Fish out that elusive command you ran last Tuesday:
 
-```bash
-history | grep docker | fzf
-````
+<img src="/angelbaby.jpg" alt="baby me" className="w-[500px] aspect-[5/4] object-cover my-4" />
+I have two older brothers, making me the youngest in the family.
+I'm very family and friend oriented, because they are my foundation.
 
-Hit **Enter** and it pastes right back to your prompt like magic.
 
----
+My mom made sure I was involved in school. Throughout grade school, I was in tennis, chess, science fair, gardening club, and basically any other club that meant I could be out of the house, lol. 
+I caught myself gravitating toward similar clubs throughout middle and high school—the VEX Robotics team, the electric car racing team, and the coding club. 
+I knew then that I wanted to be an engineer.
 
-## 2. **Reverse-search a Git log by file *content***
+<img src="/angelchess2.jpg" alt="baby me" className="w-[500px] aspect-[5/4] object-cover my-4" />
 
-Combine `git log` with `-S` (search diff) to find when a string first appeared:
+I am an Electrical Engineering major with a minor in Computer Science at Texas A&M University–Kingsville. 
+Unsurprisingly, I am heavily involved on campus. Most notably, I am an active member of the Sigma Chi Fraternity, a Supplemental Instructor, and an IT specialist.
+I love my university, the opportunities it has provided, and the people I’ve met along the way.
 
-```bash
-git log -S"resizeObserver" --oneline -- src/components/Layout.tsx
-```
+Outside of that, I love going to the beach back home at South Padre Island, listening to all kinds of music, watching critically acclaimed shows, tinkering with technology, and eating sushi. 
+I also recently picked up DJing and have been really enjoying it.
 
----
+<img src="/angeldj.jpg" alt="baby me" className="w-[500px] aspect-[5/4] object-cover my-4" />
+Thanks for reading about me,<br />
+Angel Rafael Valdez Fernandez
 
-## 3. **JSON-pretty print … with zero dependencies**
 
-Mac & Linux already ship with `python3`:
 
-```bash
-cat response.json | python3 -m json.tool | less
-```
 
----
 
-## 4. **One-liner port-forwarding for quick demos**
-
-Need to expose `localhost:3000`? Use SSH—no ngrok token needed.
-
-```bash
-ssh -R 80:localhost:3000 ssh.localhost.run
-```
-
-Now share the generated URL on Slack and watch eyebrows rise.
-
----
-
-## 5. **Measure *anything* with `time` + subshell**
-
-How long does your linter actually take?
-
-```bash
-time (npm run lint > /dev/null)
-```
-
-> 💡 *Pro-tip:* wrap this in a `pre-push` hook so slow commands get caught early.

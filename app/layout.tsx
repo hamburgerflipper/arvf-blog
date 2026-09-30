@@ -1,9 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://next-mdx-blog.vercel.app'),
@@ -11,10 +8,10 @@ export const metadata: Metadata = {
     canonical: '/'
   },
   title: {
-    default: 'John Smith',
-    template: '%s | John Smith'
+    default: 'Angel Rafael Valdez Fernandez',
+    template: '%s | Angel Rafael Valdez Fernandez'
   },
-  description: 'My portfolio, blog, and personal website.'
+  description: 'Hey yall, this is my portfolio, blog, and personal website.'
 };
 
 export default function RootLayout({
@@ -23,10 +20,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.className}`}>
-      <body className="antialiased tracking-tight">
-        <div className="min-h-screen flex flex-col justify-between pt-0 md:pt-8 p-8 dark:bg-zinc-950 bg-white text-gray-900 dark:text-zinc-200">
-          <main className="max-w-[60ch] mx-auto w-full space-y-6">
+    <html lang="en">
+      {/* 1. Added font-serif here so every page automatically uses the serif font */}
+      <body className="antialiased tracking-tight font-serif bg-white dark:bg-zinc-950 text-gray-900 dark:text-zinc-200">
+        <div className="min-h-screen flex flex-col pt-0 md:pt-8 p-8">
+          {/* 2. Changed max-w-[60ch] to max-w-6xl so the content expands across the screen */}
+          <main className="max-w-4xl mx-auto w-full space-y-6">
             {children}
           </main>
           <Footer />
@@ -39,10 +38,9 @@ export default function RootLayout({
 
 function Footer() {
   const links = [
-    { name: '@johnsmith', url: 'https://x.com/johnsmith' },
-    { name: 'youtube', url: 'https://www.youtube.com/@johnsmith' },
-    { name: 'linkedin', url: 'https://www.linkedin.com/in/johnsmith' },
-    { name: 'github', url: 'https://github.com/johnsmith' }
+    { name: 'spotify', url: 'https://open.spotify.com/user/angel1702027?si=6674d45e6f2c4fb6' },
+    { name: 'linkedin', url: 'https://www.linkedin.com/in/angel-rafael-valdez-fernandez/?isSelfProfile=true' },
+    { name: 'github', url: 'https://github.com/hamburgerflipper' }
   ];
 
   return (

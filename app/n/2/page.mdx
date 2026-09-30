@@ -1,135 +1,61 @@
 export const metadata = {
-  title: '6 Sneaky JavaScript Patterns to Cut Boilerplate',
+  title: 'Experience:',
   alternates: {
     canonical: '/n/2',
   },
 };
 
-# 6 Sneaky JavaScript Patterns to Cut Boilerplate
-
+<h1 className="text-3xl font-semibold mb-6">Experience:</h1>
+[← back](/)
+# Apprentice Electrician | Pete's Electric <br /> Harlingen, Texas (Summer 2024)
 <br />
+Right after graduating high school, I started working as an Apprentice Electrician with Pete's Electric in Harlingen, Texas. 
+It was a heck of a first job! The sun was brutal and climbing ladders was scary, but it was a fun and educational experience. <br />
+I was working on small commercial buildings, mostly educational and government buildings.
+I learned how to bend conduit, troubleshoot basic electrical issues, read blueprints, and install lighting and power systems. 
+I also gained insight into how engineers, electricians, project managers, and clients collaborate. I quickly realized that pulling wire is no joke...
 
-Micro-optimizations and quality-of-life hacks to keep your scripts lean, readable, and bug-resistant.
+<div className="flex gap-4 my-4">
+  <img src="/peteswire.jpg" alt="petes wire" className="w-1/2 object-cover" />
+  <img src="/petesselfie.jpg" alt="petes selfie" className="w-1/2 object-cover" />
+</div>
 
-## 1. **Optional Chaining `?.` + Nullish Coalescing `??`**
+<br /> 
 
-Stop writing five nested guards:
+# Electrical Engineering Intern | Ethos Engineering <br /> Harlingen, Texas (Summer + Winter 2025)
+<br /> 
+During my freshman year of college, I landed an internship with an engineering firm, Ethos Engineering, in Harlingen, Texas. I was glad to be working indoors this time, supporting the electrical team with various commercial design projects across South Texas. 
+It was super cool being on the other side of things. Instead of building with Legos, I was designing the instruction manuals. 
+Whenever I had downtime, I offered to help around the office, which allowed me to dip my toes into mechanical systems, IT, and even desk assembly (lol). <br />
+Through this experience, I learned how to design electrical, lighting, intrusion, and fire detection systems using AutoCAD and Revit. Additonaly, I did a bit of on site inspection of electrical work.
 
-```js
-// Old
-const theme = user && user.settings && user.settings.theme
-  ? user.settings.theme
-  : 'light';
+<div className="flex gap-4 my-4">
+  <img src="/ethosplan.jpg" alt="petes wire" className="w-1/2 object-cover" />
+  <img src="/ethospencil.jpg" alt="petes selfie" className="w-1/2 object-cover" />
+</div>
 
-// New
-const theme = user?.settings?.theme ?? 'light';
-````
+# Electrical Engineering Intern | Henderson Engineers <br /> Lenexa, Kansas (Summer 2026)
+<br /> 
+The summer after my sophomore year, I had the awesome opportunity to intern as an Electrical Engineer in the Venue sector at Henderson Engineers. 
+This internship stood out for two main reasons. First, I was working on massive commercial projects unlike anything I had seen before. 
+Second, it was located in Kansas City, which meant living on my own for the entire summer! 
+It was an incredible experience overall. At work, I collaborated with the amazing Venue team at Henderson and contributed to projects for NFL stadiums, major sports facilities, and convention centers like the Los Angeles Convention Center. <br />
+Technically, I learned how to process quality control markups using Bluebeam, perform load and feeder calculations, run lighting calculations using AGi32, and further strengthen my skills in Revit and BIM.
 
-Fewer lines, same safety.
+<div className="flex gap-4 my-4">
+  <img src="/hendersonsign.jpg" alt="petes wire" className="w-1/2 object-cover" />
+  <img src="/hendersongroup2.jpg" alt="petes selfie" className="w-1/2 object-cover" />
+</div>
 
----
 
-## 2. **Barrel Files for One-Line Imports**
+# Math/Engineering Tutor | Texas A&M University-Kingsville <br /> Kingsville, Texas (Winter 2025 - Fall 2026)
+<br />
+On a random Tuesday, my history professor mentioned that I took really good notes and offered to recommend me as a history tutor. 
+I agreed! During the interview, I mentioned that I was an Electrical Engineering major, which expanded my role significantly. 
+I ended up becoming a tutor for history, algebra, trigonometry, analytical geometry, digital logic design, and introductory computer science. It was an extremely rewarding experience helping fellow students pass their classes or, in most cases, earn A's. Through this role, I learned that everyone has a unique learning style and how to adapt my approach accordingly. 
+That skill has benefited me far beyond tutoring and continues to help me communicate and collaborate effectively in my professional career.
 
-Aggregate related exports into a single “barrel” file:
-
-```js
-// utils/index.js
-export * from './format';
-export * from './validate';
-export * from './fetch';
-
-// SomeComponent.js
-import { formatDate, validateEmail, getJSON } from '@/utils';
-```
-
-Kill import clutter without sacrificing tree-shaking.
-
----
-
-## 3. **Memoize Pure Functions with a `WeakMap`**
-
-Cache heavy computations tied to objects—no leaks:
-
-```js
-const cache = new WeakMap();
-
-export function expensive(obj) {
-  if (cache.has(obj)) return cache.get(obj);
-  const result = crunchNumbers(obj); // 🚀 costly
-  cache.set(obj, result);
-  return result;
-}
-```
-
-Results follow the object’s lifetime—GC does the cleanup.
-
----
-
-## 4. **Tagged Template Literals for Safe HTML**
-
-Prevent XSS without a third-party lib:
-
-```js
-const escape = (strings, ...values) =>
-  strings.reduce(
-    (acc, str, i) =>
-      acc +
-      str +
-      (values[i]
-        ? String(values[i]).replace(/[&<>"']/g, (s) => ({
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#39;',
-          })[s])
-        : ''),
-    '',
-  );
-
-const name = '<script>alert(1)</script>';
-document.body.innerHTML = escape`<p>Hello, ${name}!</p>`;
-```
-
-Zero dependencies, maximum safety.
-
----
-
-## 5. **`AbortController` for Cancellable `fetch`**
-
-Stop orphaning network calls on route changes:
-
-```js
-const controller = new AbortController();
-const { signal } = controller;
-
-fetch('/api/data', { signal })
-  .then((r) => r.json())
-  .catch((e) => {
-    if (e.name !== 'AbortError') throw e;
-  });
-
-// later…
-controller.abort();
-```
-
-No more “state update on unmounted component” warnings.
-
----
-
-## 6. **Format Like a Native with `Intl`**
-
-Forget custom helpers—use the built-ins:
-
-```js
-const usd = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-}).format(1999.99); // "$1,999.99"
-
-const isoDate = new Intl.DateTimeFormat('sv-SE').format(new Date());
-// "2025-06-05"
-```
-
-Locale-aware, performant, and zero bloat.
+<div className="flex gap-4 my-4">
+  <img src="/tutoring.jpg" alt="petes wire" className="w-1/2 object-cover" />
+  <img src="/tutoringpencil.jpg" alt="petes selfie" className="w-1/2 object-cover" />
+</div>
