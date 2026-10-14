@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://next-mdx-blog.vercel.app'),
+  metadataBase: new URL('https://angelrafaelvaldezfernandez.com'),
   alternates: {
     canonical: '/'
   },
@@ -11,7 +11,29 @@ export const metadata: Metadata = {
     default: 'Angel Rafael Valdez Fernandez',
     template: '%s | Angel Rafael Valdez Fernandez'
   },
-  description: 'Hey yall, this is my portfolio, blog, and personal website.'
+  description: 'Personal website.',
+  openGraph: {
+    title: 'Angel Rafael Valdez Fernandez',
+    description: 'Personal Website',
+    url: 'https://angelrafaelvaldezfernandez.com',
+    siteName: 'ARVF Personal Website',
+    images: [
+      {
+        url: '/arvf_thumb.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'ARVF Personal Website'
+      },
+    ],
+    locale: 'en_US',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'angelRafael Personal Website',
+    description: 'Personal Website',
+    images: ['/arvf_thumb.jpg']
+  },
 };
 
 export default function RootLayout({
@@ -20,11 +42,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      {/* 1. Added font-serif here so every page automatically uses the serif font */}
-      <body className="antialiased tracking-tight font-serif bg-white dark:bg-zinc-950 text-gray-900 dark:text-zinc-200">
+    /* Force dark mode globally by adding className="dark" */
+    <html lang="en" className="dark">
+      <body className="antialiased tracking-tight font-serif bg-zinc-950 text-zinc-200">
         <div className="min-h-screen flex flex-col pt-0 md:pt-8 p-8">
-          {/* 2. Changed max-w-[60ch] to max-w-6xl so the content expands across the screen */}
           <main className="max-w-4xl mx-auto w-full space-y-6">
             {children}
           </main>
@@ -52,7 +73,7 @@ function Footer() {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 dark:text-gray-500 hover:text-blue-500 transition-colors duration-200"
+            className="text-zinc-400 hover:text-white transition-colors duration-200"
           >
             {link.name}
           </a>
